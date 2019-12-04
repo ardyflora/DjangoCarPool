@@ -11,10 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
-
-# Load env variables from .env file
-load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,11 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if os.environ.get('SECRET_KEY'):
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-else:
-    with open('~/CarPool/secretkey.txt') as f:
-        SECRET_KEY = f.read().strip()
+with open('secretkey.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -47,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rideshare.apps.RideshareConfig',
     'phonenumber_field',
+    'django_generate_secret_key',
     'django_tables2'
 ]
 
