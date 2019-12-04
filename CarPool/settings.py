@@ -28,7 +28,7 @@ if os.environ.get('SECRET_KEY'):
     SECRET_KEY = os.environ.get('SECRET_KEY')
 else:
     with open('~/CarPool/secretkey.txt') as f:
-    SECRET_KEY = f.read().strip()
+        SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
